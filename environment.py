@@ -1,24 +1,16 @@
 from browser import Browser
-from pages.login_page import LoginPage
-from pages.header_page import HeaderPage
-from pages.base_page import BasePage
 
 
+# executa os comandos antes de todos os testes iniciarem
 def before_all(context):
     context.browser = Browser()
 
 
+# executa os comandos depois de todos os testes terminarem
 def after_all(context):
     context.browser.browser_quit()
 
 
-def base_page():
-    return BasePage()
-
-
-def header_page():
-    return HeaderPage()
-
-
-def login_page():
-    return LoginPage()
+# executa os comandos entre cada cenário
+def after_scenario(context, scenario):
+    context.browser.browser_clear()
